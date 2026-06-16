@@ -1,0 +1,166 @@
+variavel,grupo,label
+Pessoas,Geral,Total de pessoas
+Rural,Geral,Pessoas - área rural
+Urbana,Geral,Pessoas - área urbana
+rural_escolaridadeNA,Escolaridade,Rural - escolaridade não informada
+rural_fundamental_completo,Escolaridade,Rural - fundamental completo
+rural_fundamental_incompleto,Escolaridade,Rural - fundamental incompleto
+rural_medio_completo,Escolaridade,Rural - médio completo
+rural_medio_incompleto,Escolaridade,Rural - médio incompleto
+rural_sem_instrucao,Escolaridade,Rural - sem instrução / menos de 1 ano de estudo
+rural_superior_completo,Escolaridade,Rural - superior completo
+rural_superior_incompleto,Escolaridade,Rural - superior incompleto
+urbano_escolaridadeNA,Escolaridade,Urbana - escolaridade não informada
+urbano_fundamental_completo,Escolaridade,Urbana - fundamental completo
+urbano_fundamental_incompleto,Escolaridade,Urbana - fundamental incompleto
+urbano_medio_completo,Escolaridade,Urbana - médio completo
+urbano_medio_incompleto,Escolaridade,Urbana - médio incompleto
+urbano_sem_instrucao,Escolaridade,Urbana - sem instrução / menos de 1 ano de estudo
+urbano_superior_completo,Escolaridade,Urbana - superior completo
+urbano_superior_incompleto,Escolaridade,Urbana - superior incompleto
+setor_administracao_publica,Setor,"Administração pública, defesa e seguridade social"
+setor_agricultura,Setor,"Agricultura, pecuária, produção florestal, pesca e aquicultura"
+setor_alojamento,Setor,Alojamento e alimentação
+setor_atividades_mal_definidas,Setor,Atividades mal definidas
+setor_comercio,Setor,Comércio e reparação de veículos automotores e motocicletas
+setor_construcao,Setor,Construção
+setor_educacao_saude,Setor,"Educação, saúde humana e serviços sociais"
+setor_industria,Setor,Indústria geral
+setor_informacao,Setor,"Informação, comunicação e atividades financeiras, imobiliárias, profissionais e administrativas"
+setor_na,Setor,Setor de atividade não informado
+setor_outros_servicos,Setor,Outros serviços
+setor_servicos_domesticos,Setor,Serviços domésticos
+setor_transporte,Setor,"Transporte, armazenagem e correio"
+rural_administracao_publica,Setor x Área,"Rural - administração pública, defesa e seguridade social"
+rural_agricultura,Setor x Área,"Rural - agricultura, pecuária, produção florestal, pesca e aquicultura"
+rural_alojamento,Setor x Área,Rural - alojamento e alimentação
+rural_atividades_mal_definidas,Setor x Área,Rural - atividades mal definidas
+rural_comercio,Setor x Área,Rural - comércio e reparação de veículos e motocicletas
+rural_construcao,Setor x Área,Rural - construção
+rural_educacao_saude,Setor x Área,"Rural - educação, saúde humana e serviços sociais"
+rural_industria,Setor x Área,Rural - indústria geral
+rural_informacao,Setor x Área,"Rural - informação, comunicação e atividades financeiras/imobiliárias/profissionais/administrativas"
+rural_outros_servicos,Setor x Área,Rural - outros serviços
+rural_servicos_domesticos,Setor x Área,Rural - serviços domésticos
+rural_setor_na,Setor x Área,Rural - setor não informado
+rural_transporte,Setor x Área,"Rural - transporte, armazenagem e correio"
+urbano_administracao_publica,Setor x Área,"Urbana - administração pública, defesa e seguridade social"
+urbano_agricultura,Setor x Área,"Urbana - agricultura, pecuária, produção florestal, pesca e aquicultura"
+urbano_alojamento,Setor x Área,Urbana - alojamento e alimentação
+urbano_atividades_mal_definidas,Setor x Área,Urbana - atividades mal definidas
+urbano_comercio,Setor x Área,Urbana - comércio e reparação de veículos e motocicletas
+urbano_construcao,Setor x Área,Urbana - construção
+urbano_educacao_saude,Setor x Área,"Urbana - educação, saúde humana e serviços sociais"
+urbano_industria,Setor x Área,Urbana - indústria geral
+urbano_informacao,Setor x Área,"Urbana - informação, comunicação e atividades financeiras/imobiliárias/profissionais/administrativas"
+urbano_outros_servicos,Setor x Área,Urbana - outros serviços
+urbano_servicos_domesticos,Setor x Área,Urbana - serviços domésticos
+urbano_setor_na,Setor x Área,Urbana - setor não informado
+urbano_transporte,Setor x Área,"Urbana - transporte, armazenagem e correio"
+adulto,Faixa etária,Adultos (faixa etária)
+crianca,Faixa etária,Crianças (faixa etária)
+jovem,Faixa etária,Jovens (faixa etária)
+rural_adulto,Faixa etária,Rural - adultos
+rural_crianca,Faixa etária,Rural - crianças
+rural_jovem,Faixa etária,Rural - jovens
+urbano_adulto,Faixa etária,Urbana - adultos
+urbano_crianca,Faixa etária,Urbana - crianças
+urbano_jovem,Faixa etária,Urbana - jovens
+nao_qualificado,Qualificação,Mão de obra não qualificada
+qualificacao_na,Qualificação,Qualificação não informada
+qualificado,Qualificação,Mão de obra qualificada
+rural_nao_qualificado,Qualificação,Rural - mão de obra não qualificada
+rural_qualificacao_na,Qualificação,Rural - qualificação não informada
+rural_qualificado,Qualificação,Rural - mão de obra qualificada
+urbano_nao_qualificado,Qualificação,Urbana - mão de obra não qualificada
+urbano_qualificacao_na,Qualificação,Urbana - qualificação não informada
+urbano_qualificado,Qualificação,Urbana - mão de obra qualificada
+administracao_publica_na,Setor x Qualificação,Administração pública - qualificação não informada
+administracao_publica_nao_qualificado,Setor x Qualificação,Administração pública - mão de obra não qualificada
+administracao_publica_qualificado,Setor x Qualificação,Administração pública - mão de obra qualificada
+agricultura_na,Setor x Qualificação,Agricultura - qualificação não informada
+agricultura_nao_qualificado,Setor x Qualificação,Agricultura - mão de obra não qualificada
+agricultura_qualificado,Setor x Qualificação,Agricultura - mão de obra qualificada
+alojamento_na,Setor x Qualificação,Alojamento e alimentação - qualificação não informada
+alojamento_nao_qualificado,Setor x Qualificação,Alojamento e alimentação - mão de obra não qualificada
+alojamento_qualificado,Setor x Qualificação,Alojamento e alimentação - mão de obra qualificada
+atividades_mal_definidas_na,Setor x Qualificação,Atividades mal definidas - qualificação não informada
+atividades_mal_definidas_nao_qualificado,Setor x Qualificação,Atividades mal definidas - mão de obra não qualificada
+atividades_mal_definidas_qualificado,Setor x Qualificação,Atividades mal definidas - mão de obra qualificada
+comercio_na,Setor x Qualificação,Comércio - qualificação não informada
+comercio_nao_qualificado,Setor x Qualificação,Comércio - mão de obra não qualificada
+comercio_qualificado,Setor x Qualificação,Comércio - mão de obra qualificada
+construcao_na,Setor x Qualificação,Construção - qualificação não informada
+construcao_nao_qualificado,Setor x Qualificação,Construção - mão de obra não qualificada
+construcao_qualificado,Setor x Qualificação,Construção - mão de obra qualificada
+educacao_saude_na,Setor x Qualificação,Educação/saúde/serviços sociais - qualificação não informada
+educacao_saude_nao_qualificado,Setor x Qualificação,Educação/saúde/serviços sociais - mão de obra não qualificada
+educacao_saude_qualificado,Setor x Qualificação,Educação/saúde/serviços sociais - mão de obra qualificada
+industria_na,Setor x Qualificação,Indústria - qualificação não informada
+industria_nao_qualificado,Setor x Qualificação,Indústria - mão de obra não qualificada
+industria_qualificado,Setor x Qualificação,Indústria - mão de obra qualificada
+informacao_na,Setor x Qualificação,Informação/financeiro/imobiliário/profissional/administrativo - qualificação não informada
+informacao_nao_qualificado,Setor x Qualificação,Informação/financeiro/imobiliário/profissional/administrativo - não qualificado
+informacao_qualificado,Setor x Qualificação,Informação/financeiro/imobiliário/profissional/administrativo - qualificado
+outros_servicos_na,Setor x Qualificação,Outros serviços - qualificação não informada
+outros_servicos_nao_qualificado,Setor x Qualificação,Outros serviços - mão de obra não qualificada
+outros_servicos_qualificado,Setor x Qualificação,Outros serviços - mão de obra qualificada
+servicos_domesticos_na,Setor x Qualificação,Serviços domésticos - qualificação não informada
+servicos_domesticos_nao_qualificado,Setor x Qualificação,Serviços domésticos - mão de obra não qualificada
+servicos_domesticos_qualificado,Setor x Qualificação,Serviços domésticos - mão de obra qualificada
+setor_na_na,Setor x Qualificação,Setor não informado - qualificação não informada
+setor_na_nao_qualificado,Setor x Qualificação,Setor não informado - não qualificado
+setor_na_qualificado,Setor x Qualificação,Setor não informado - qualificado
+transporte_na,Setor x Qualificação,Transporte - qualificação não informada
+transporte_nao_qualificado,Setor x Qualificação,Transporte - mão de obra não qualificada
+transporte_qualificado,Setor x Qualificação,Transporte - mão de obra qualificada
+rural_agricultura_adulto,Agricultura x Faixa etária,Rural - agricultura - adultos
+rural_agricultura_crianca,Agricultura x Faixa etária,Rural - agricultura - crianças
+rural_agricultura_jovem,Agricultura x Faixa etária,Rural - agricultura - jovens
+urbano_agricultura_adulto,Agricultura x Faixa etária,Urbana - agricultura - adultos
+urbano_agricultura_crianca,Agricultura x Faixa etária,Urbana - agricultura - crianças
+urbano_agricultura_jovem,Agricultura x Faixa etária,Urbana - agricultura - jovens
+rural_agricultura_escolaridade_na,Agricultura x Escolaridade,Rural - agricultura - escolaridade não informada
+rural_agricultura_fundamental_completo,Agricultura x Escolaridade,Rural - agricultura - fundamental completo
+rural_agricultura_fundamental_incompleto,Agricultura x Escolaridade,Rural - agricultura - fundamental incompleto
+rural_agricultura_medio_completo,Agricultura x Escolaridade,Rural - agricultura - médio completo
+rural_agricultura_medio_incompleto,Agricultura x Escolaridade,Rural - agricultura - médio incompleto
+rural_agricultura_sem_instrucao,Agricultura x Escolaridade,Rural - agricultura - sem instrução / menos de 1 ano de estudo
+rural_agricultura_superior_completo,Agricultura x Escolaridade,Rural - agricultura - superior completo
+rural_agricultura_superior_incompleto,Agricultura x Escolaridade,Rural - agricultura - superior incompleto
+urbano_agricultura_escolaridade_na,Agricultura x Escolaridade,Urbana - agricultura - escolaridade não informada
+urbano_agricultura_fundamental_completo,Agricultura x Escolaridade,Urbana - agricultura - fundamental completo
+urbano_agricultura_fundamental_incompleto,Agricultura x Escolaridade,Urbana - agricultura - fundamental incompleto
+urbano_agricultura_medio_completo,Agricultura x Escolaridade,Urbana - agricultura - médio completo
+urbano_agricultura_medio_incompleto,Agricultura x Escolaridade,Urbana - agricultura - médio incompleto
+urbano_agricultura_sem_instrucao,Agricultura x Escolaridade,Urbana - agricultura - sem instrução / menos de 1 ano de estudo
+urbano_agricultura_superior_completo,Agricultura x Escolaridade,Urbana - agricultura - superior completo
+urbano_agricultura_superior_incompleto,Agricultura x Escolaridade,Urbana - agricultura - superior incompleto
+desocupado,Força de trabalho,Pessoas desocupadas
+fora_forca_trabalho,Força de trabalho,Pessoas fora da força de trabalho
+fora_forca_trabalho_na,Força de trabalho,Fora da força de trabalho - força de trabalho potencial não informada
+fora_forca_trabalho_nao_potencial,Força de trabalho,Fora da força de trabalho - fora da força de trabalho potencial
+fora_forca_trabalho_potencial,Força de trabalho,Fora da força de trabalho - na força de trabalho potencial
+forca_trabalho,Força de trabalho,Pessoas na força de trabalho
+forca_trabalho_desocupado,Força de trabalho,Na força de trabalho - desocupadas
+forca_trabalho_na,Força de trabalho,Na força de trabalho - situação de ocupação não informada
+forca_trabalho_ocupado,Força de trabalho,Na força de trabalho - ocupadas
+ocupacao_na,Força de trabalho,Situação de ocupação não informada
+ocupado,Força de trabalho,Pessoas ocupadas
+ocupado_nao_subocupado,Força de trabalho,Ocupadas - não subocupadas
+ocupado_subocupado,Força de trabalho,Ocupadas - subocupadas por insuficiência de horas
+potencial_desalentado,Força de trabalho,Força de trabalho potencial - desalentadas
+potencial_nao_desalentado,Força de trabalho,Força de trabalho potencial - não desalentadas
+agricultura_ocupado,Agricultura,Agricultura - pessoas ocupadas
+agricultura_ocupado_adulto,Agricultura,Agricultura - ocupados - adultos
+agricultura_ocupado_adulto_rural,Agricultura,Agricultura - ocupados - adultos - área rural
+agricultura_ocupado_adulto_urbana,Agricultura,Agricultura - ocupados - adultos - área urbana
+agricultura_ocupado_crianca,Agricultura,Agricultura - ocupados - crianças
+agricultura_ocupado_crianca_rural,Agricultura,Agricultura - ocupados - crianças - área rural
+agricultura_ocupado_crianca_urbana,Agricultura,Agricultura - ocupados - crianças - área urbana
+agricultura_ocupado_jovem,Agricultura,Agricultura - ocupados - jovens
+agricultura_ocupado_jovem_rural,Agricultura,Agricultura - ocupados - jovens - área rural
+agricultura_ocupado_jovem_urbana,Agricultura,Agricultura - ocupados - jovens - área urbana
+idade_media_agricultura,Agricultura,Idade média (ponderada) - ocupados na agricultura
+criancas_menos14,Demografia,Crianças com menos de 14 anos
+populacao_14mais,Demografia,População de 14 anos ou mais

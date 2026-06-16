@@ -1,0 +1,10 @@
+# Ignora tudo por padrão...
+*
+
+# ...exceto os arquivos essenciais do dashboard (Shinylive export + código-fonte)
+!docs/
+!docs/**
+!dashboard_shiny/
+!dashboard_shiny/**
+!.gitignore
+!README.md
