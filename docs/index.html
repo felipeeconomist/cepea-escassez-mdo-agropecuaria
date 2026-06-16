@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Projeto de Escassez de Mão de Obra na Agropecuária</title>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+<style>
+  :root{
+    --bg:#f7f7f5;
+    --card:#ffffff;
+    --border:#e2e0da;
+    --text:#2b2a27;
+    --muted:#6b6a66;
+    --accent:#2e6b3e;
+    --accent-light:#e7f1e9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+  header{
+    padding:24px 32px 8px;
+  }
+  header h1{
+    margin:0 0 4px;
+    font-size:1.4rem;
+    font-weight:600;
+  }
+  header p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.9rem;
+  }
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:16px 32px 48px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px;
+  }
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-bottom:18px;
+  }
+  .field{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    min-width:220px;
+    flex:1 1 220px;
+  }
+  .field.years{
+    flex:1 1 320px;
+    min-width:320px;
+  }
+  label{
+    font-size:0.78rem;
+    font-weight:600;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .hint{
+    font-size:0.72rem;
+    color:var(--muted);
+    font-weight:400;
+    text-transform:none;
+    letter-spacing:0;
+  }
+  select{
+    padding:8px 10px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    font-size:0.92rem;
+    background:#fff;
+    color:var(--text);
+  }
+  select:focus{
+    outline:2px solid var(--accent-light);
+    border-color:var(--accent);
+  }
+  select[multiple]{
+    height:128px;
+  }
+  .years-sliders{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .years-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .years-row span.year-label{
+    font-size:0.8rem;
+    color:var(--muted);
+    width:34px;
+  }
+  .years-row span.year-value{
+    font-weight:600;
+    width:42px;
+    text-align:right;
+  }
+  input[type="range"]{
+    flex:1;
+    accent-color: var(--accent);
+  }
+  #chart{
+    width:100%;
+    height:480px;
+  }
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .meta-row .group-tags{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .meta-row .group-tag{
+    font-size:0.78rem;
+    color:var(--accent);
+    background:var(--accent-light);
+    padding:3px 9px;
+    border-radius:20px;
+    font-weight:600;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:0.78rem;
+    padding:12px 0 28px;
+  }
+  #status{
+    color:var(--muted);
+    font-size:0.85rem;
+    padding:40px 0;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Projeto de Escassez de Mão de Obra na Agropecuária</h1>
+  <p>Selecione até 3 variáveis, a localização e o período para explorar a série histórica (PNAD Contínua).</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <div class="controls">
+      <div class="field">
+        <label for="indicador">Variáveis <span class="hint">(Ctrl/Cmd + clique para selecionar até 3)</span></label>
+        <select id="indicador" multiple size="6"></select>
+      </div>
+      <div class="field">
+        <label for="uf">Localização</label>
+        <select id="uf"></select>
+      </div>
+      <div class="field years">
+        <label>Período</label>
+        <div class="years-sliders">
+          <div class="years-row">
+            <span class="year-label">De</span>
+            <input type="range" id="anoIni" step="1">
+            <span class="year-value" id="anoIniValue"></span>
+          </div>
+          <div class="years-row">
+            <span class="year-label">Até</span>
+            <input type="range" id="anoFim" step="1">
+            <span class="year-value" id="anoFimValue"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <span id="chartTitle" style="font-weight:600;"></span>
+      <span class="group-tags" id="groupTags"></span>
+    </div>
+
+    <div id="status">Carregando dados…</div>
+    <div id="chart" style="display:none;"></div>
+  </div>
+
+  <footer>Fonte: PNAD Contínua (IBGE) · elaboração própria</footer>
+</div>
+
+<script>
+let DATA = [];
+let LABELS = {};
+const CORES = ['#2e6b3e', '#b5651d', '#3b6ea5'];
+const MAX_VARS = 3;
+
+const fmt = (v) => v === null || v === undefined || isNaN(v)
+  ? "—"
+  : v.toLocaleString('pt-BR', { maximumFractionDigits: 2 });
+
+async function init(){
+  const [dataRes, labelsRes] = await Promise.all([
+    fetch('data/data.json'),
+    fetch('data/labels.json')
+  ]);
+  DATA = await dataRes.json();
+  LABELS = await labelsRes.json();
+
+  setupUfSelect();
+  setupIndicadorSelect();
+  setupYearSliders();
+
+  document.getElementById('indicador').addEventListener('change', onIndicadorChange);
+  document.getElementById('uf').addEventListener('change', render);
+  document.getElementById('anoIni').addEventListener('input', onYearChange);
+  document.getElementById('anoFim').addEventListener('input', onYearChange);
+
+  document.getElementById('status').style.display = 'none';
+  document.getElementById('chart').style.display = 'block';
+  render();
+}
+
+function setupUfSelect(){
+  const uf = document.getElementById('uf');
+  const ufs = Array.from(new Set(DATA.map(d => d.UF))).sort((a,b) => {
+    if (a === 'Brasil') return -1;
+    if (b === 'Brasil') return 1;
+    return a.localeCompare(b, 'pt-BR');
+  });
+  ufs.forEach(u => {
+    const opt = document.createElement('option');
+    opt.value = u; opt.textContent = u;
+    uf.appendChild(opt);
+  });
+  uf.value = 'Brasil';
+}
+
+function setupIndicadorSelect(){
+  const sel = document.getElementById('indicador');
+  const groups = {};
+  Object.entries(LABELS).forEach(([key, meta]) => {
+    groups[meta.grupo] = groups[meta.grupo] || [];
+    groups[meta.grupo].push({ key, label: meta.label });
+  });
+
+  Object.entries(groups).forEach(([grupo, items]) => {
+    const og = document.createElement('optgroup');
+    og.label = grupo;
+    items
+      .sort((a,b) => a.label.localeCompare(b.label, 'pt-BR'))
+      .forEach(item => {
+        const opt = document.createElement('option');
+        opt.value = item.key;
+        opt.textContent = item.label;
+        og.appendChild(opt);
+      });
+    sel.appendChild(og);
+  });
+
+  // Seleção inicial
+  const first = sel.querySelector('option[value="Pessoas"]') || sel.querySelector('option');
+  if (first) first.selected = true;
+}
+
+// Mantém no máximo MAX_VARS selecionados: ao exceder, desmarca a seleção
+// mais antiga (ordem de seleção rastreada em selectionOrder).
+let selectionOrder = [];
+
+function onIndicadorChange(){
+  const sel = document.getElementById('indicador');
+  const selected = Array.from(sel.selectedOptions).map(o => o.value);
+
+  // Atualiza a ordem: remove quem foi desmarcado, adiciona quem é novo
+  selectionOrder = selectionOrder.filter(v => selected.includes(v));
+  selected.forEach(v => {
+    if (!selectionOrder.includes(v)) selectionOrder.push(v);
+  });
+
+  if (selectionOrder.length > MAX_VARS){
+    const remover = selectionOrder.shift();
+    const opt = Array.from(sel.options).find(o => o.value === remover);
+    if (opt) opt.selected = false;
+  }
+
+  render();
+}
+
+function setupYearSliders(){
+  const anos = Array.from(new Set(DATA.map(d => d.Ano))).sort((a,b) => a-b);
+  const min = anos[0], max = anos[anos.length - 1];
+  const ini = document.getElementById('anoIni');
+  const fim = document.getElementById('anoFim');
+  [ini, fim].forEach(s => { s.min = min; s.max = max; });
+  ini.value = min;
+  fim.value = max;
+  updateYearLabels();
+}
+
+function onYearChange(){
+  const ini = document.getElementById('anoIni');
+  const fim = document.getElementById('anoFim');
+  if (parseInt(ini.value) > parseInt(fim.value)){
+    if (this && this.id === 'anoIni') fim.value = ini.value;
+    else ini.value = fim.value;
+  }
+  updateYearLabels();
+  render();
+}
+
+function updateYearLabels(){
+  document.getElementById('anoIniValue').textContent = document.getElementById('anoIni').value;
+  document.getElementById('anoFimValue').textContent = document.getElementById('anoFim').value;
+}
+
+function render(){
+  const sel = document.getElementById('indicador');
+  const indicadores = Array.from(sel.selectedOptions).map(o => o.value);
+  const uf = document.getElementById('uf').value;
+  const anoIni = parseInt(document.getElementById('anoIni').value);
+  const anoFim = parseInt(document.getElementById('anoFim').value);
+
+  const rows = DATA
+    .filter(d => d.UF === uf && d.Ano >= anoIni && d.Ano <= anoFim)
+    .sort((a,b) => a.Ano - b.Ano);
+
+  const x = rows.map(r => r.Ano);
+
+  const traces = indicadores.map((indicador, i) => {
+    const meta = LABELS[indicador];
+    const y = rows.map(r => r[indicador]);
+    return {
+      x, y,
+      type: 'scatter',
+      mode: 'lines+markers',
+      name: meta.label,
+      line: { color: CORES[i], width: 2.5 },
+      marker: { size: 6, color: CORES[i] },
+      hovertemplate: '<b>%{x}</b><br>' + meta.label + ': %{customdata}<extra></extra>',
+      customdata: y.map(fmt)
+    };
+  });
+
+  const tituloEl = document.getElementById('chartTitle');
+  const tagsEl = document.getElementById('groupTags');
+  tagsEl.innerHTML = '';
+
+  if (indicadores.length === 0){
+    tituloEl.textContent = 'Selecione ao menos uma variável';
+  } else if (indicadores.length === 1){
+    const meta = LABELS[indicadores[0]];
+    tituloEl.textContent = `${meta.label} — ${uf}`;
+    const tag = document.createElement('span');
+    tag.className = 'group-tag';
+    tag.textContent = meta.grupo;
+    tagsEl.appendChild(tag);
+  } else {
+    tituloEl.textContent = `Comparação de variáveis — ${uf}`;
+    const gruposUnicos = Array.from(new Set(indicadores.map(v => LABELS[v].grupo)));
+    gruposUnicos.forEach(g => {
+      const tag = document.createElement('span');
+      tag.className = 'group-tag';
+      tag.textContent = g;
+      tagsEl.appendChild(tag);
+    });
+  }
+
+  const layout = {
+    margin: { t: 10, r: 20, l: 60, b: 60 },
+    xaxis: { title: 'Ano', dtick: 1, tickformat: 'd' },
+    yaxis: { title: 'Valor', separatethousands: true },
+    hovermode: 'closest',
+    legend: { orientation: 'h', y: -0.2 },
+    font: { family: '-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif', size: 12 }
+  };
+
+  Plotly.react('chart', traces, layout, { responsive: true, displaylogo: false });
+}
+
+init();
+</script>
+
+</body>
+</html>
